@@ -1,6 +1,5 @@
 import requests
 from tkinter import *
-import tkinter as tk
 from datetime import datetime
 
 api_key = 'Your_Weatherstack_API'
