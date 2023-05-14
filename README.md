@@ -17,7 +17,7 @@ Cloud-Kun Weather Reporter is a simple GUI application that displays real-time w
 
 ## Installation and Usage
 
-1. Clone the repository: `git clone https://github.com/username/repo.git`
+1. Clone the repository: `git clone https://github.com/XzerozZ/repo.git`
 2. Navigate to the project directory: `cd repo`
 3. Install the required modules: `pip install -r requirements.txt`
 4. Run the application: `python app.py`
