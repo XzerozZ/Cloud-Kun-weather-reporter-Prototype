@@ -8,7 +8,7 @@ Cloud-kun Weather Reporter is a simple Python application that provides current 
 - User-friendly graphical user interface (GUI) using Tkinter.
 - Fetches weather data from the Weatherstack API.
 - Displays temperature in Celsius, wind speed in km/h, UV index, and weather description.
-- Shows observation time and location for the weather data.
+- Shows observation time and country for the weather data.
 
 ## Prerequisites
 
