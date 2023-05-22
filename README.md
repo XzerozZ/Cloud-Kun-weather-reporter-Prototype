@@ -1,32 +1,51 @@
-# Cloud-Kun Weather Reporter
+# Cloud-kun Weather Reporter
 
-Cloud-Kun Weather Reporter is a simple GUI application that displays real-time weather information for a city. The application uses the [Weatherstack API](https://weatherstack.com/) to fetch the weather data.
+Cloud-kun Weather Reporter is a simple Python application that provides current weather information for a specified city using the Weatherstack API. It displays temperature, wind speed, wind direction, UV index, time, location, and weather description.
 
 ## Features
 
-- Real-time weather information for a city
-- Displays weather description, temperature, humidity, wind speed, wind direction, pressure, UV index, and location
-- Simple GUI interface
-- User-friendly design
+- Retrieve and display current weather data for a specified city.
+- User-friendly graphical user interface (GUI) using Tkinter.
+- Fetches weather data from the Weatherstack API.
+- Displays temperature in Celsius, wind speed in km/h, UV index, and weather description.
+- Shows observation time and location for the weather data.
 
-## Requirements
+## Prerequisites
 
-- Python 3.x
-- requests module
-- tkinter module
+Before running the Weather App, make sure you have the following prerequisites:
 
-## Installation and Usage
+- Python 3.x installed on your system.
+- Required Python packages: `requests`, `tkinter`, and `Pillow`.
+- Weatherstack API access key. Sign up for a free account at [Weatherstack](https://weatherstack.com/) and obtain an API key.
 
-1. Clone the repository: `git clone https://github.com/XzerozZ/repo.git`
-2. Navigate to the project directory: `cd repo`
-3. Install the required modules: `pip install -r requirements.txt`
-4. Run the application: `python app.py`
+## Getting Started
+
+1. Clone the repository.
+
+2. Install the required Python packages:
+
+   ```
+   pip install requests tkinter Pillow
+   ```
+
+3. Open the `weather_app.py` file in a text editor.
+
+4. Replace `'YOUR_WEATHERSTACK_API_ACCESS_KEY'` with your actual Weatherstack API access key in the `getWeather()` function.
+
+5. Run the `weather_app.py` file.
+
+6. Enter the desired city in the input field and click the "Submit" button.
+
+7. The current weather information for the specified city will be displayed on the screen, including temperature, wind speed, wind direction, UV index, time, location, and weather description.
+
+Enjoy using the Weather App to stay updated with the latest weather conditions in your desired cities!
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## Acknowledgements
 
-- [Weatherstack API](https://weatherstack.com/) - Weather data API
-- [Tkinter](https://docs.python.org/3/library/tkinter.html) - Python's standard GUI package
+- Weatherstack API - [Weatherstack](https://weatherstack.com/)
+
+Feel free to customize the README file according to your needs, adding more details about the application and instructions for users.
