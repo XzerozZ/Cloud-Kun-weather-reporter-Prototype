@@ -1,86 +1,105 @@
 import requests
 from tkinter import *
-from datetime import datetime
-
-api_key = 'Your_Weatherstack_API'
-
-def get_weather():
-    location = city_entry.get()
-    api_url = f"http://api.weatherstack.com/current?access_key={api_key}&query={location}"
-    response = requests.get(api_url)
-    weather_data = response.json()
-
-    if 'current' in weather_data:
-        date_time = datetime.now().strftime("%d %b %Y | %I:%M:%S %p")
-
-        weather_desc = weather_data['current']['weather_descriptions'][0]
-        temperature_c = weather_data['current']['temperature']
-        humidity = weather_data['current']['humidity']
-        wind_speed = weather_data['current']['wind_speed']
-        wind_dir = weather_data['current']['wind_dir']
-        pressure = weather_data['current']['pressure']
-        uv_index = weather_data['current']['uv_index']
-        country = weather_data['location']['country']
-
-        location_label.config(text=f"{location.title()}, {country}")
-        weather_label.config(text=f"Weather Description : {weather_desc}")
-        temp_label.config(text=f"Temperature : {temperature_c} °C")
-        humidity_label.config(text=f"Humidity : {humidity}%")
-        wind_speed_label.config(text=f"Wind Speed : {wind_speed} km/h")
-        wind_dir_label.config(text=f"Wind Direction : {wind_dir}")
-        pressure_label.config(text=f"Pressure : {pressure} mb")
-        uv_index_label.config(text=f"UV Index : {uv_index}")
-        datetime_label.config(text=f"({date_time})")
-        lasttext_label.config(text=f"Have a nice day")
-
-    else:
-        location_label.config(text="Sorry, weather information not available for this city.")
+import tkinter.messagebox
 
 root = Tk()
-root.title("Cloud-Kun weather reporter (Prototype)")
+root.geometry("1250x650")
+root.title("Weather App")
+root.configure(bg='light sky blue')
+
+lable_0 = Label(root, text="  WEATHER NOW  ", anchor='e', font=("comic sans", 48, "bold",), bg='lawn green', fg='black',
+                bd=7, relief='raised')
+lable_0.place(x=400, y=30)
+
+city_names = StringVar()
+entry_1 = Entry(root, font=("arial", 23), bg='pale green', textvariable=city_names, width=24)
+entry_1.place(x=700, y=160)
+
+lable_7 = Label(root, text="Enter the city name ", width=20, font=("comic sans", 23, "bold"), bg='green2', fg='grey2',
+                borderwidth=3, relief="raised")
+lable_7.place(x=200, y=160)
+
+lable_temp = Label(root, text="Temperature : ", width=20, font=("comic sans", 17), fg='light yellow', bg='dark green',
+                borderwidth=3, relief="raised")
+lable_temp.place(x=110, y=310)
+
+lable_wind_speed = Label(root, text="Wind Speed : ", width=20, font=("comic sans", 17), fg='light yellow', bg='dark green',
+                borderwidth=3, relief="raised")
+lable_wind_speed.place(x=110, y=380)
+
+lable_wind_dir = Label(root, text="Wind Direction : ", width=20, font=("comic sans", 17), fg='light yellow', bg='dark green',
+                borderwidth=3, relief="raised")
+lable_wind_dir.place(x=110, y=450)
+
+lable_uv_index = Label(root, text="UV Index : ", width=20, font=("comic sans", 17), fg='light yellow', bg='dark green',
+                borderwidth=3, relief="raised")
+lable_uv_index.place(x=750, y=310)
+
+lable_time = Label(root, text="Time : ", width=20, font=("comic sans", 17), fg='light yellow', bg='dark green',
+                borderwidth=3, relief="raised")
+lable_time.place(x=750, y=380)
+
+lable_location = Label(root, text="Location : ", width=20, font=("comic sans", 17), fg='light yellow', bg='dark green',
+                borderwidth=3, relief="raised")
+lable_location.place(x=750, y=450)
+
+lable_desc = Label(root, text=" Description :", width=20, font=("comic sans", 17), fg='light yellow', bg='dark green',
+                borderwidth=3, relief="raised")
+lable_desc.place(x=320, y=540)
+
+lable_temp_val = Label(root, text="...", width=7, bg='white', font=("bold", 25), fg='black')
+lable_temp_val.place(x=460, y=310)
+
+lable_wind_speed_val = Label(root, text="...", width=7, bg='white', font=("bold", 25), fg='black')
+lable_wind_speed_val.place(x=460, y=380)
+
+lable_wind_dir_val = Label(root, text="...", width=7, bg='white', font=("bold", 25), fg='black')
+lable_wind_dir_val.place(x=460, y=450)
+
+lable_uv_index_val = Label(root, text="...", width=7, bg='white', font=("bold", 25), fg='black')
+lable_uv_index_val.place(x=1030, y=310)
+
+lable_time_val = Label(root, text="...", width=15, bg='white', font=("bold", 17), fg='black')
+lable_time_val.place(x=1030, y=380)
+
+lable_location_val = Label(root, text="...", width=15, bg='white', font=("bold", 17), fg='black')
+lable_location_val.place(x=1030, y=450)
+
+lable_desc_val = Label(root, text="...", width=24, bg='white', font=("bold", 17), fg='black')
+lable_desc_val.place(x=693, y=540)
+
+def getWeather():
+    access_key = 'Your Weatherstack API'  
+    city_name = entry_1.get()
+
+    response = requests.get(f'http://api.weatherstack.com/current?access_key={access_key}&query={city_name}')
+
+    if response.status_code == 200:
+        data = response.json()
+
+        if 'current' in data:
+            temperature = data['current']['temperature']
+            wind_speed = data['current']['wind_speed']
+            wind_dir = data['current']['wind_dir']
+            uv_index = data['current']['uv_index']
+            time = data['current']['observation_time']
+            location = data['location']['name']
+            description = data['current']['weather_descriptions'][0]
+
+            lable_temp_val.configure(text=f"{temperature}°C")
+            lable_wind_speed_val.configure(text=f"{wind_speed} km/h")
+            lable_wind_dir_val.configure(text=wind_dir)
+            lable_uv_index_val.configure(text=uv_index)
+            lable_time_val.configure(text=time)
+            lable_location_val.configure(text=location)
+            lable_desc_val.configure(text=description)
+        else:
+            tkinter.messagebox.showinfo("Error", "Weather data not found")
+    else:
+        tkinter.messagebox.showinfo("Error", "Failed to fetch weather data")
 
 
-root.config(bg="white")
-input_frame = Frame(root,bg="midnight blue")
-input_frame.pack(pady=10)
+Button(root, text="SUBMIT", width=15, font=("comic sans", 13), bg='maroon', fg='white', bd=9, command=getWeather).place(
+    x=590, y=235)
 
-city_entry = Entry(input_frame, font=("Helvetica", 14),bg='black',fg='white')
-city_entry.pack(side=LEFT, padx=10)
-
-get_weather_button = Button(input_frame, text="Get Weather", font=("Helvetica", 14), bg="orange red", activebackground="deep sky blue",activeforeground = "white",fg="black" ,command=get_weather)
-get_weather_button.pack(side=LEFT)
-
-weather_frame = Frame(root,bg="white")
-weather_frame.pack(padx=10, pady=10)
-
-location_label = Label(weather_frame, font=("Helvetica", 18),bg="white")
-location_label.pack()
-
-datetime_label = Label(weather_frame, font=("Helvetica", 12),bg="white")
-datetime_label.pack()
-
-weather_label = Label(weather_frame, font=("Helvetica", 14),bg="white")
-weather_label.pack()
-
-temp_label = Label(weather_frame, font=("Helvetica", 14),bg="white")
-temp_label.pack()
-
-humidity_label = Label(weather_frame, font=("Helvetica", 14),bg="white")
-humidity_label.pack()
-
-wind_speed_label = Label(weather_frame, font=("Helvetica", 14),bg="white")
-wind_speed_label.pack()
-
-wind_dir_label = Label(weather_frame, font=("Helvetica", 14),bg="white")
-wind_dir_label.pack()
-
-pressure_label = Label(weather_frame, font=("Helvetica", 14),bg="white")
-pressure_label.pack()
-
-uv_index_label = Label(weather_frame, font=("Helvetica", 14),bg="white")
-uv_index_label.pack()
-
-lasttext_label = Label(weather_frame, font=("Helvetica", 14),bg="white")
-lasttext_label.pack()
-
-root.mainloop()
+mainloop()
