@@ -1,6 +1,6 @@
 # Cloud-kun Weather Reporter
 
-Cloud-kun Weather Reporter is a simple Python application that provides current weather information for a specified city using the Weatherstack API. It displays temperature, wind speed, wind direction, UV index, time, location, and weather description.
+Cloud-kun Weather Reporter is a simple Python application that provides current weather information for a specified city using the Weatherstack API. It displays temperature, wind speed, wind direction, UV index, time, country, and weather description.
 
 ## Features
 
@@ -36,7 +36,7 @@ Before running the Weather App, make sure you have the following prerequisites:
 
 6. Enter the desired city in the input field and click the "Submit" button.
 
-7. The current weather information for the specified city will be displayed on the screen, including temperature, wind speed, wind direction, UV index, time, location, and weather description.
+7. The current weather information for the specified city will be displayed on the screen, including temperature, wind speed, wind direction, UV index, time, country, and weather description.
 
 Enjoy using the Weather App to stay updated with the latest weather conditions in your desired cities!
 
