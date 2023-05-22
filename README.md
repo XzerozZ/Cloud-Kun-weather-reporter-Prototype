@@ -28,7 +28,7 @@ Before running the Weather App, make sure you have the following prerequisites:
    pip install requests tkinter Pillow
    ```
 
-3. Open the `weather_app.py` file in a text editor.
+3. Open the `app.py` file in a text editor.
 
 4. Replace `'YOUR_WEATHERSTACK_API_ACCESS_KEY'` with your actual Weatherstack API access key in the `getWeather()` function.
 
