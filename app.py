@@ -39,9 +39,9 @@ lable_time = Label(root, text="Time : ", width=20, font=("comic sans", 17), fg='
                 borderwidth=3, relief="raised")
 lable_time.place(x=750, y=380)
 
-lable_location = Label(root, text="Location : ", width=20, font=("comic sans", 17), fg='light yellow', bg='dark green',
+lable_country = Label(root, text="Country : ", width=20, font=("comic sans", 17), fg='light yellow', bg='dark green',
                 borderwidth=3, relief="raised")
-lable_location.place(x=750, y=450)
+lable_country.place(x=750, y=450)
 
 lable_desc = Label(root, text=" Description :", width=20, font=("comic sans", 17), fg='light yellow', bg='dark green',
                 borderwidth=3, relief="raised")
@@ -62,8 +62,8 @@ lable_uv_index_val.place(x=1030, y=310)
 lable_time_val = Label(root, text="...", width=15, bg='white', font=("bold", 17), fg='black')
 lable_time_val.place(x=1030, y=380)
 
-lable_location_val = Label(root, text="...", width=15, bg='white', font=("bold", 17), fg='black')
-lable_location_val.place(x=1030, y=450)
+lable_country_val = Label(root, text="...", width=15, bg='white', font=("bold", 17), fg='black')
+lable_country_val.place(x=1030, y=450)
 
 lable_desc_val = Label(root, text="...", width=24, bg='white', font=("bold", 17), fg='black')
 lable_desc_val.place(x=693, y=540)
@@ -83,7 +83,7 @@ def getWeather():
             wind_dir = data['current']['wind_dir']
             uv_index = data['current']['uv_index']
             time = data['current']['observation_time']
-            location = data['location']['name']
+            country = data['location']['country']
             description = data['current']['weather_descriptions'][0]
 
             lable_temp_val.configure(text=f"{temperature}°C")
@@ -91,7 +91,7 @@ def getWeather():
             lable_wind_dir_val.configure(text=wind_dir)
             lable_uv_index_val.configure(text=uv_index)
             lable_time_val.configure(text=time)
-            lable_location_val.configure(text=location)
+            lable_country_val.configure(text=country)
             lable_desc_val.configure(text=description)
         else:
             tkinter.messagebox.showinfo("Error", "Weather data not found")
