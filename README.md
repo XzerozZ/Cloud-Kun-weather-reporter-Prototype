@@ -32,7 +32,7 @@ Before running the Weather App, make sure you have the following prerequisites:
 
 4. Replace `'YOUR_WEATHERSTACK_API_ACCESS_KEY'` with your actual Weatherstack API access key in the `getWeather()` function.
 
-5. Run the `weather_app.py` file.
+5. Run the `app.py` file.
 
 6. Enter the desired city in the input field and click the "Submit" button.
 
