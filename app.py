@@ -4,7 +4,7 @@ import tkinter.messagebox
 
 root = Tk()
 root.geometry("1250x650")
-root.title("Weather App")
+root.title("Cloud-Kun Weather Reporter")
 root.configure(bg='light sky blue')
 
 lable_0 = Label(root, text="  WEATHER NOW  ", anchor='e', font=("comic sans", 48, "bold",), bg='lawn green', fg='black',
@@ -69,7 +69,7 @@ lable_desc_val = Label(root, text="...", width=24, bg='white', font=("bold", 17)
 lable_desc_val.place(x=693, y=540)
 
 def getWeather():
-    access_key = 'Your Weatherstack API'  
+    access_key = 'YOUR_WEATHERSTACK_API_ACCESS_KEY'  
     city_name = entry_1.get()
 
     response = requests.get(f'http://api.weatherstack.com/current?access_key={access_key}&query={city_name}')
